@@ -52,9 +52,36 @@ public:
 int main()
 {
 	Platform ps5("PS5", "Sony"), nSwitch("Switch", "Nintendo"), xsx("Xbox Series X", "Microsoft");
-	ps5.getManufacturer();
-	nSwitch.getManufacturer();
-	xsx.getManufacturer();
-	
+	Game botw("The Legend of Zelda: Breath of the Wild", "Nintendo", "Nintendo");
+	Game acv("Assassin's Creed Valhalla", "Ubisoft", "Ubisoft Montreal");
+
+	bool inMenu = true;
+	char selection1 = 'z';
+
+	while (inMenu == true)
+	{
+		cout << "A) View Platforms \n";
+		cout << "B) View Games\n";
+		cout << "C) Create Achievements\n";
+		while (selection1 != 'A' && selection1 != 'B' && selection1 != 'C')
+		{
+			cout << "Make a selection: ";
+			cin >> selection1;
+			selection1 = toupper(selection1);
+			if (selection1 != 'A' && selection1 != 'B' && selection1 != 'C')
+				cout << "Invalid entry\n";
+		}
+		switch (selection1)
+		{
+		case 'A':
+			break;
+		case 'B':
+			break;
+		case 'C':
+			break;
+		}
+		cout << "success";
+		inMenu = false;
+	}
 	return 0;
 }
