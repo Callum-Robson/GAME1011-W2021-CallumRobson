@@ -7,6 +7,7 @@ private:
 	string m_title, m_description;
 	int m_scoreValue;
 public:
+	Achievement();
 	Achievement(string t, string d, int s)
 	{
 		m_title = t;
@@ -19,12 +20,34 @@ class Game
 {
 private:
 	string m_name, m_publisher, m_developer;
+	int m_arraySize;
+	Achievement* m_pArray;
 public:
 	Game(string n, string p, string d)
 	{
 		m_name = n;
 		m_publisher = p;
 		m_developer = d;
+	}
+	void getName()
+	{
+		cout << m_name;
+	}
+	void getPublisher()
+	{
+		cout << m_publisher;
+	}
+	void getDeveloper()
+	{
+		cout << m_developer;
+	}
+	void setArraySize(int x)
+	{
+		m_arraySize = x;
+	}
+	void allocateArray()
+	{
+		m_pArray = new Achievement[m_arraySize];
 	}
 };
 
@@ -38,7 +61,7 @@ public:
 		m_name = n;
 		m_manufacturer = m;
 	}
-	void setName()
+	void getName()
 	{
 		cout << m_name << endl;
 	}
@@ -51,12 +74,20 @@ public:
 
 int main()
 {
-	Platform ps5("PS5", "Sony"), nSwitch("Switch", "Nintendo"), xsx("Xbox Series X", "Microsoft");
-	Game botw("The Legend of Zelda: Breath of the Wild", "Nintendo", "Nintendo");
-	Game acv("Assassin's Creed Valhalla", "Ubisoft", "Ubisoft Montreal");
+	Platform platforms[]
+	{ Platform("PS5", "Sony"), Platform("Switch", "Nintendo"),  Platform("Xbox Series X", "Microsoft")};
 
+	Game games[]
+	{
+		Game("The Legend of Zelda: Breath of the Wild", "Nintendo", "Nintendo"),
+		Game("Assassin's Creed Valhalla", "Ubisoft", "Ubisoft Montreal")
+	};
+	
 	bool inMenu = true;
 	char selection1 = 'z';
+	int selection2 = -1;
+	string achDef = "0";
+	int achCounter = 0;
 
 	while (inMenu == true)
 	{
@@ -74,10 +105,36 @@ int main()
 		switch (selection1)
 		{
 		case 'A':
+			for (int i = 0; i < 3; i++)
+				platforms[i].getName();
 			break;
 		case 'B':
+
+			cout << "View Games selected \n" << "Games: \n";
+			for (int i = 0; i < 2; i++)
+			{
+				games[i].getName(); cout << ", ";
+				games[i].getDeveloper(); cout << ", ";
+				games[i].getPublisher(); cout << endl;
+			}
 			break;
 		case 'C':
+			cout << "Select which game to create achievements for:\n";
+			for (int i = 0; i < 2; i++)
+			{
+				cout << i + 1 << ") ";
+				games[i].getName(); cout << ", ";
+				games[i].getDeveloper(); cout << ", ";
+				games[i].getPublisher(); cout << endl;
+			}
+			cin >> selection2;
+			cout << "Define achievement: ";
+			cin >> achDef;
+			if (achDef != "0")
+			{
+				achCounter++;
+			}
+			games[selection2 - 1].setArraySize(achCounter);
 			break;
 		}
 		cout << "success";
