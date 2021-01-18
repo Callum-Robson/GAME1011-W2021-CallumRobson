@@ -8,7 +8,7 @@ private:
 	string m_title, m_description;
 	int m_scoreValue;
 public:
-	Achievement() { m_title = "0", m_description = "0", m_scoreValue = 0; };
+	Achievement() { m_title = "empty", m_description = "0", m_scoreValue = 0; };
 	Achievement(string t, string d, int s)
 	{
 		m_title = t;
@@ -19,13 +19,13 @@ public:
 	{
 		m_description = x;
 	}
-	void defineArrayTitle(string x)
+	void defineArrayTitle(string &x)
 	{
 		m_title = x;
 	}
-	void getTitle()
+	string getTitle()
 	{
-		cout << m_title << endl;
+		return m_title;
 	}
 };
 
@@ -35,6 +35,7 @@ private:
 	string m_name, m_publisher, m_developer;
 	int m_arraySize;
 	Achievement* m_pArray;
+	Achievement* m_pArray2;
 public:
 	Game(string n, string p, string d)
 	{
@@ -58,21 +59,30 @@ public:
 	{
 		m_arraySize = x;
 	}
-	void allocateArray()
+	void allocateArray(int x)
 	{
-		m_pArray = new Achievement[m_arraySize];
+		if (x == 1)
+			m_pArray = new Achievement[m_arraySize];
+		else if (x == 0)
+			m_pArray2 = new Achievement[m_arraySize];
 	}
 	void defineArrayDesciption(string x)
 	{
 		m_pArray->defineArrayDescription(x);
 	}
-	void defineArrayTitle(string x)
+	void defineArrayTitle(string x, int y, int z)
 	{
-		m_pArray->defineArrayTitle(x);
+		if (y == 1)
+			m_pArray[z].defineArrayTitle(x);
+		if (y == 0)
+			m_pArray2[z].defineArrayTitle(x);
 	}
-	void getAchTitle()
+	string getAchTitle(int y, int z)
 	{
-		m_pArray->getTitle();
+		if (y == 1)
+			return m_pArray[z].getTitle();
+		else if (y == 0)
+			return m_pArray2[z].getTitle();
 	}
 };
 
@@ -113,6 +123,8 @@ int main()
 	int selection2 = -1;
 	string achTitle = "0";
 	int achCounter = 0;
+	bool arraySwitch = 1;
+	bool reverseArraySwitch = !arraySwitch;
 
 	while (inMenu == true)
 	{
@@ -153,31 +165,44 @@ int main()
 				games[i].getPublisher(); cout << endl;
 			}
 			cin >> selection2;
-			cout << "Input achievement title: ";
-			cin >> achTitle;
-			if (achTitle != "0")
+			for (int i = 0; i < 2; i++)
 			{
-				achCounter++;
-			}
-			if (achCounter < 2)
-			{
-				// do the following if the achievements array is currently empty
-				games[selection2 - 1].setArraySize(achCounter);
-				games[selection2 - 1].allocateArray();
-				games[selection2 - 1].defineArrayTitle(achTitle);
-				games[selection2 - 1].getAchTitle();
-			}
-			else
-			{
-				for (int i = 0; i < achCounter; i++)
+				cout << "Input achievement title: ";
+				cin >> achTitle;
+				if (achTitle != "0")
 				{
-					//copy old array into new array, delete old array, use bool to alternate between the two
+					achCounter++;
 				}
+				arraySwitch = achCounter % 2;
+				if (achCounter < 2)
+				{
+					// do the following if the achievements array is currently empty
+					games[selection2 - 1].setArraySize(achCounter);
+					games[selection2 - 1].allocateArray(arraySwitch);
+					games[selection2 - 1].defineArrayTitle(achTitle, arraySwitch, 0);
+					//games[selection2 - 1].getAchTitle(arraySwitch, 0);
+				}
+				else
+				{
+					games[selection2 - 1].setArraySize(achCounter);
+					games[selection2 - 1].allocateArray(arraySwitch);
+					for (int i = 0; i < achCounter - 1; i++) // if achCounter is 2, array only has 1 element, runs while i < 1, runs once
+					{
+						//copy old array into new array, delete old array, use bool to alternate between the two
+						games[selection2 - 1].defineArrayTitle(games[selection2 - 1].getAchTitle(1, i), arraySwitch, i);
+					}
+					games[selection2 - 1].defineArrayTitle(achTitle, arraySwitch, achCounter - 1);
+				}
+				// if array not empty repeat the above after copying what was in the array to a new array
 			}
-			// if array not empty repeat the above after copying what was in the array to a new array
+			for (int i = 0; i < 2; i++)
+			{
+				cout << games[selection2 - 1].getAchTitle(arraySwitch, i) << endl; //  error as there isnt yet a second element
+			}
 			break;
 		}
 		cout << "success";
+		
 		
 		inMenu = false;
 	}
