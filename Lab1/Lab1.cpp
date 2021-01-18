@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 class Achievement
@@ -7,12 +8,24 @@ private:
 	string m_title, m_description;
 	int m_scoreValue;
 public:
-	Achievement();
+	Achievement() { m_title = "0", m_description = "0", m_scoreValue = 0; };
 	Achievement(string t, string d, int s)
 	{
 		m_title = t;
 		m_description = d;
 		m_scoreValue = s;
+	}
+	void defineArrayDescription(string x)
+	{
+		m_description = x;
+	}
+	void defineArrayTitle(string x)
+	{
+		m_title = x;
+	}
+	void getTitle()
+	{
+		cout << m_title << endl;
 	}
 };
 
@@ -48,6 +61,18 @@ public:
 	void allocateArray()
 	{
 		m_pArray = new Achievement[m_arraySize];
+	}
+	void defineArrayDesciption(string x)
+	{
+		m_pArray->defineArrayDescription(x);
+	}
+	void defineArrayTitle(string x)
+	{
+		m_pArray->defineArrayTitle(x);
+	}
+	void getAchTitle()
+	{
+		m_pArray->getTitle();
 	}
 };
 
@@ -86,7 +111,7 @@ int main()
 	bool inMenu = true;
 	char selection1 = 'z';
 	int selection2 = -1;
-	string achDef = "0";
+	string achTitle = "0";
 	int achCounter = 0;
 
 	while (inMenu == true)
@@ -128,16 +153,20 @@ int main()
 				games[i].getPublisher(); cout << endl;
 			}
 			cin >> selection2;
-			cout << "Define achievement: ";
-			cin >> achDef;
-			if (achDef != "0")
+			cout << "Input achievement title: ";
+			cin >> achTitle;
+			if (achTitle != "0")
 			{
 				achCounter++;
 			}
 			games[selection2 - 1].setArraySize(achCounter);
+			games[selection2 - 1].allocateArray();
+			games[selection2 - 1].defineArrayTitle(achTitle);
+			games[selection2 - 1].getAchTitle();
 			break;
 		}
 		cout << "success";
+		
 		inMenu = false;
 	}
 	return 0;
