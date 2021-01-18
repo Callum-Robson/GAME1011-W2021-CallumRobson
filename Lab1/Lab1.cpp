@@ -159,10 +159,12 @@ int main()
 			{
 				achCounter++;
 			}
+			// do the following if the achievements array is currently empty
 			games[selection2 - 1].setArraySize(achCounter);
 			games[selection2 - 1].allocateArray();
 			games[selection2 - 1].defineArrayTitle(achTitle);
 			games[selection2 - 1].getAchTitle();
+			// if array not empty repeat the above after copying what was in the array to a new array
 			break;
 		}
 		cout << "success";
