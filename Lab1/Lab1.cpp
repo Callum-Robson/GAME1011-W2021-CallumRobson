@@ -159,11 +159,21 @@ int main()
 			{
 				achCounter++;
 			}
-			// do the following if the achievements array is currently empty
-			games[selection2 - 1].setArraySize(achCounter);
-			games[selection2 - 1].allocateArray();
-			games[selection2 - 1].defineArrayTitle(achTitle);
-			games[selection2 - 1].getAchTitle();
+			if (achCounter < 2)
+			{
+				// do the following if the achievements array is currently empty
+				games[selection2 - 1].setArraySize(achCounter);
+				games[selection2 - 1].allocateArray();
+				games[selection2 - 1].defineArrayTitle(achTitle);
+				games[selection2 - 1].getAchTitle();
+			}
+			else
+			{
+				for (int i = 0; i < achCounter; i++)
+				{
+					//copy old array into new array, delete old array, use bool to alternate between the two
+				}
+			}
 			// if array not empty repeat the above after copying what was in the array to a new array
 			break;
 		}
