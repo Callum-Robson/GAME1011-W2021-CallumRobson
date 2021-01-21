@@ -2,7 +2,7 @@
 #include <string>
 #include "Game.h"
 #include "Platform.h"
-#include "Achievement.h"
+
 using namespace std;
 
 
@@ -10,6 +10,26 @@ int main()
 {
 	Platform platforms[]
 	{ Platform("PS5", "Sony"), Platform("Switch", "Nintendo"),  Platform("Xbox Series X", "Microsoft")};
+	// PS5 Games
+	platforms[0].setGameInfo("Assassin's Creed Valhalla", "Ubisoft", "Ubisoft Montreal", 0);
+	platforms[0].setGameInfo("Marvel's Spider-Man: Miles Morales", "Sony Interactive Entertainment",
+	"Insomniac Games", 1);
+	platforms[0].setGameInfo("SackBoy: A Big Adventure", "Sony Interactive Entertainment",
+	"Sumo Digital", 2);
+	platforms[0].setGameInfo("Demon's Souls", "Sony Interactive Entertainment", "Bluepoint Games", 3);
+	platforms[0].setGameInfo("Immortals Fenyx Rising", "Ubisoft", "Ubisoft Quebec", 4);
+	// Switch Games
+	platforms[1].setGameInfo("The Legend of Zelda: Breath of the Wild", "Nintendo", "Nintendo EPD", 0);
+	platforms[1].setGameInfo("Pokemon Sword", "Nintendo & The Pokemon Company", "Game Freak", 1);
+	platforms[1].setGameInfo("Animal Crossing: New Horizons", "Nintendo", "Nintendo EPD", 2);
+	platforms[1].setGameInfo("Luigi's Mansion 3", "Nintendo", "Next Level Games", 3);
+	platforms[1].setGameInfo("Yoshi's Crafted World", "Nintendo", "Good-Feel", 4);
+	// XSX Games 
+	platforms[2].setGameInfo("Call of Duty: Black Ops Cold War", "Activision", "Treyarch & Raven Software", 0);
+	platforms[2].setGameInfo("Cyberpunk 2077", "CD Prokekt", "CD Projekt Red", 1);
+	platforms[2].setGameInfo("NBA 2K21", "2K Sports", "Visual Concepts", 2);
+	platforms[2].setGameInfo("Hitman 3", "IO Interactive", "IO Interactive", 3);
+	platforms[2].setGameInfo("Devil May Cry 5", "Capcom", "Capcom", 4);
 	
 	Game games[]
 	{
