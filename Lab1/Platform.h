@@ -10,27 +10,33 @@ class Platform
 {
 private:
 	string m_name, m_manufacturer;
-	Game* m_pGameArray;
+	Game m_pGameArray[5];
 public:
 	Platform(string n, string m)
 	{
 		m_name = n;
 		m_manufacturer = m;
 	}
-	void getName()
+	string getName()
 	{
-		cout << m_name << endl;
+		return m_name;
 	}
-	void getManufacturer()
+	string getManufacturer()
 	{
-		cout << m_manufacturer << endl;
+		m_manufacturer;
 	}
 	void setGameInfo(string n, string p, string d, int i);
 
 	string getGameName(int i);
 	string getGamePublisher(int i);
 	string getGameDeveloper(int i);
+
+	void setAchievementTitle(int game, string title, int arraySwitch, int j);
+	void setAchievementArraySize(int game, int arraysize);
+	void allocateAchievementArray(int game, int arraySwitch);
+	string getAchievementTitle(int game, int arraySwitch, int j);
 };
+
 
 #endif
 

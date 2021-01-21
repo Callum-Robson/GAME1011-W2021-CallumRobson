@@ -1,25 +1,25 @@
 #include "Game.h"
 
-void Game::allocateArray(int x)
+void Game::allocateArray(int achievementArraySwitch)
 {
-	if (x == 1)
+	if (achievementArraySwitch  == 1)
 		m_pArray = new Achievement[m_arraySize];
-	else if (x == 0)
+	else if (achievementArraySwitch == 0)
 		m_pArray2 = new Achievement[m_arraySize];
 }
 
-void Game::defineArrayTitle(string x, int y, int z)
+void Game::defineArrayTitle(string arrayTitle, int achievementArraySwitch, int j)
 {
-	if (y == 1)
-		m_pArray[z].defineArrayTitle(x);
-	if (y == 0)
-		m_pArray2[z].defineArrayTitle(x);
+	if (achievementArraySwitch == 1)
+		m_pArray[j].defineArrayTitle(arrayTitle);
+	if (achievementArraySwitch == 0)
+		m_pArray2[j].defineArrayTitle(arrayTitle);
 }
 
-string Game::getAchTitle(int y, int z)
+string Game::getAchTitle(int achievementArraySwitch, int j)
 {
-	if (y == 1)
-		return m_pArray[z].getTitle();
-	else if (y == 0)
-		return m_pArray2[z].getTitle();
+	if (achievementArraySwitch == 1)
+		return m_pArray[j].getTitle();
+	else if (achievementArraySwitch == 0)
+		return m_pArray2[j].getTitle();
 }

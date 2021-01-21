@@ -14,6 +14,10 @@ private:
 	Achievement* m_pArray;
 	Achievement* m_pArray2;
 public:
+	Game()
+	{
+		m_name = "null"; m_publisher = "null"; m_developer = "null";
+	}
 	Game(string n, string p, string d)
 	{
 		m_name = n;
@@ -44,17 +48,17 @@ public:
 	{
 		return m_developer;
 	}
-	void setArraySize(int x)
+	void setArraySize(int arraySize)
 	{
-		m_arraySize = x;
+		m_arraySize = arraySize;
 	}
-	void defineArrayDesciption(string x)
+	void defineArrayDesciption(string description)
 	{
-		m_pArray->defineArrayDescription(x);
+		m_pArray->defineArrayDescription(description);
 	}
-	void defineArrayTitle(string x, int y, int z);
-	string getAchTitle(int y, int z);
-	void allocateArray(int x);
+	void defineArrayTitle(string arrayTitle, int arraySwitch, int j);
+	string getAchTitle(int achievementArraySwitch, int j);
+	void allocateArray(int achievementArraySwitch);
 
 };
 
