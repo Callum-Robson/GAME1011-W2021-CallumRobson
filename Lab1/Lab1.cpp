@@ -1,117 +1,16 @@
 #include <iostream>
 #include <string>
+#include "Game.h"
+#include "Platform.h"
+#include "Achievement.h"
 using namespace std;
-
-class Achievement
-{
-private:
-	string m_title, m_description;
-	int m_scoreValue;
-public:
-	Achievement() { m_title = "empty", m_description = "0", m_scoreValue = 0; };
-	Achievement(string t, string d, int s)
-	{
-		m_title = t;
-		m_description = d;
-		m_scoreValue = s;
-	}
-	void defineArrayDescription(string x)
-	{
-		m_description = x;
-	}
-	void defineArrayTitle(string &x)
-	{
-		m_title = x;
-	}
-	string getTitle()
-	{
-		return m_title;
-	}
-};
-
-class Game
-{
-private:
-	string m_name, m_publisher, m_developer;
-	int m_arraySize;
-	Achievement* m_pArray;
-	Achievement* m_pArray2;
-public:
-	Game(string n, string p, string d)
-	{
-		m_name = n;
-		m_publisher = p;
-		m_developer = d;
-	}
-	void getName()
-	{
-		cout << m_name;
-	}
-	void getPublisher()
-	{
-		cout << m_publisher;
-	}
-	void getDeveloper()
-	{
-		cout << m_developer;
-	}
-	void setArraySize(int x)
-	{
-		m_arraySize = x;
-	}
-	void allocateArray(int x)
-	{
-		if (x == 1)
-			m_pArray = new Achievement[m_arraySize];
-		else if (x == 0)
-			m_pArray2 = new Achievement[m_arraySize];
-	}
-	void defineArrayDesciption(string x)
-	{
-		m_pArray->defineArrayDescription(x);
-	}
-	void defineArrayTitle(string x, int y, int z)
-	{
-		if (y == 1)
-			m_pArray[z].defineArrayTitle(x);
-		if (y == 0)
-			m_pArray2[z].defineArrayTitle(x);
-	}
-	string getAchTitle(int y, int z)
-	{
-		if (y == 1)
-			return m_pArray[z].getTitle();
-		else if (y == 0)
-			return m_pArray2[z].getTitle();
-	}
-};
-
-class Platform
-{
-private:
-	string m_name, m_manufacturer;
-public:
-	Platform(string n, string m)
-	{
-		m_name = n;
-		m_manufacturer = m;
-	}
-	void getName()
-	{
-		cout << m_name << endl;
-	}
-	void getManufacturer()
-	{
-		cout << m_manufacturer << endl;
-	}
-};
 
 
 int main()
 {
 	Platform platforms[]
 	{ Platform("PS5", "Sony"), Platform("Switch", "Nintendo"),  Platform("Xbox Series X", "Microsoft")};
-
+	
 	Game games[]
 	{
 		Game("The Legend of Zelda: Breath of the Wild", "Nintendo", "Nintendo"),
@@ -119,7 +18,6 @@ int main()
 	};
 	
 	bool inMenu = true;
-	char selection1 = 'z';
 	int selection2 = -1;
 	string achTitle = "0";
 	int achCounter = 0;
@@ -128,10 +26,12 @@ int main()
 
 	while (inMenu == true)
 	{
+		char selection1 = 'z';
 		cout << "A) View Platforms \n";
 		cout << "B) View Games\n";
 		cout << "C) Create Achievements\n";
-		while (selection1 != 'A' && selection1 != 'B' && selection1 != 'C')
+		cout << "D) Exit Menu\n";
+		while (selection1 != 'A' && selection1 != 'B' && selection1 != 'C' && selection1 != 'D')
 		{
 			cout << "Make a selection: ";
 			cin >> selection1;
@@ -200,11 +100,10 @@ int main()
 				cout << games[selection2 - 1].getAchTitle(arraySwitch, i) << endl; //  error as there isnt yet a second element
 			}
 			break;
-		}
-		cout << "success";
-		
-		
-		inMenu = false;
+		case 'D':
+			inMenu = false;;
+			break;
+		}	
 	}
 	return 0;
 }
