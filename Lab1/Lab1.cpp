@@ -68,11 +68,16 @@ int main()
 		case 'B':
 
 			cout << "View Games selected \n" << "Games: \n";
-			for (int i = 0; i < 2; i++)
+			for (int i = 0; i < 3; i++)
 			{
-				games[i].getName(); cout << ", ";
+				for (int j = 0; j < 5; j++)
+				{
+					cout << platforms[i].getGameName(j) << " " << platforms[i].getGamePublisher(j) << " ";
+					cout << platforms[i].getGameDeveloper(j) << endl;
+				}
+				/*games[i].getName(); cout << ", ";
 				games[i].getDeveloper(); cout << ", ";
-				games[i].getPublisher(); cout << endl;
+				games[i].getPublisher(); cout << endl;*/
 			}
 			break;
 		case 'C':
