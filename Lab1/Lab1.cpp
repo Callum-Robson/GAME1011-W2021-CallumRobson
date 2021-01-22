@@ -44,6 +44,8 @@ int main()
 	int achCounter = 0;
 	bool arraySwitch = 1;
 	bool reverseArraySwitch = !arraySwitch;
+	bool newMenu = 0;
+	int selection2 = 0;
 
 	while (inMenu == true)
 	{
@@ -83,6 +85,7 @@ int main()
 			}
 			break;
 		case 'C':
+			platformSelection = 0;
 			while (platformSelection != 1 && platformSelection != 2 && platformSelection != 3)
 			{
 				cout << "Select a platform:\n";
@@ -101,7 +104,8 @@ int main()
 			}
 			cin >> gameSelection;
 			//Game chosen
-			for (int i = 0; i < 2; i++)
+			newMenu = 0;
+			while (newMenu == 0)
 			{
 				cout << "Input achievement title: ";
 				cin >> achTitle;
@@ -128,12 +132,20 @@ int main()
 						platforms[platformSelection - 1].setAchievementTitle(gameSelection - 1, 
 						platforms[platformSelection - 1].getAchievementTitle(gameSelection - 1, 1, i),
 						arraySwitch, i);
-						//games[selection2 - 1].defineArrayTitle(games[selection2 - 1].getAchTitle(1, i), arraySwitch, i);
 					}
 					platforms[platformSelection - 1].setAchievementTitle(gameSelection - 1, achTitle, arraySwitch, achCounter-1);
-					//games[gameSelection - 1].defineArrayTitle(achTitle, arraySwitch, achCounter - 1);
 				}
 				// if array not empty repeat the above after copying what was in the array to a new array
+				selection2 = 0;
+				while (selection2 != 1 && selection2 != 2)
+				{
+					cout << "1) Add More Achievements\n2) Return to Previous Menu\n";
+					cin >> selection2;
+					if (selection2 == 2)
+					{
+						newMenu = 1;
+					}
+				}
 			}
 			/*for (int i = 0; i < 2; i++)
 			{
