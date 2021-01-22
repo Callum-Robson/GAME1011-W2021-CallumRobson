@@ -57,7 +57,7 @@ int main()
 			cout << "Make a selection: ";
 			cin >> selection1;
 			selection1 = toupper(selection1);
-			if (selection1 != 'A' && selection1 != 'B' && selection1 != 'C')
+			if (selection1 != 'A' && selection1 != 'B' && selection1 != 'C' && selection1 != 'D')
 				cout << "Invalid entry\n";
 		}
 		switch (selection1)
@@ -126,7 +126,7 @@ int main()
 					{
 						//copy old array into new array, delete old array, use bool to alternate between the two
 						platforms[platformSelection - 1].setAchievementTitle(gameSelection - 1, 
-						platforms[platformSelection - 1].getAchievementTitle(platformSelection - 1, 1, i),
+						platforms[platformSelection - 1].getAchievementTitle(gameSelection - 1, 1, i),
 						arraySwitch, i);
 						//games[selection2 - 1].defineArrayTitle(games[selection2 - 1].getAchTitle(1, i), arraySwitch, i);
 					}
