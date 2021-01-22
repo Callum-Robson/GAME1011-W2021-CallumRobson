@@ -46,11 +46,12 @@ int main()
 	bool reverseArraySwitch = !arraySwitch;
 	bool newMenu = 0;
 	int selection2 = 0;
+	int selection3 = 0;
 
 	while (inMenu == true)
 	{
 		char selection1 = 'z';
-		cout << "\nA) View Platforms \n";
+		cout << "A) View Platforms \n";
 		cout << "B) View Games\n";
 		cout << "C) Create Achievements\n";
 		cout << "D) Exit Menu\n";
@@ -66,7 +67,7 @@ int main()
 		{
 		case 'A':
 			for (int i = 0; i < 3; i++)
-				platforms[i].getName();
+				cout << platforms[i].getName() << endl;
 			break;
 		case 'B':
 
@@ -85,72 +86,85 @@ int main()
 			}
 			break;
 		case 'C':
-			platformSelection = 0;
-			while (platformSelection != 1 && platformSelection != 2 && platformSelection != 3)
+			selection3 = 0;
+			while (selection3 == 0)
 			{
-				cout << "Select a platform:\n";
-				for (int i = 0; i < 3; i++)
+				platformSelection = 0;
+				while (platformSelection != 1 && platformSelection != 2 && platformSelection != 3 && platformSelection != 4)
 				{
-					cout << i + 1 << ") " << platforms[i].getName() << "\n";
-				}
-				cin >> platformSelection;
-				if (platformSelection != 1 && platformSelection != 2 && platformSelection != 3)
-					cout << "Invalid Entry\n";
-			}
-			cout << "Select which game to create achievements for:\n";
-			for (int j = 0; j < 5; j++)
-			{
-				cout << j+1 << ") " << platforms[platformSelection - 1].getGameName(j) << "\n";
-			}
-			cin >> gameSelection;
-			//Game chosen
-			newMenu = 0;
-			while (newMenu == 0)
-			{
-				cout << "Input achievement title: ";
-				cin >> achTitle;
-				if (achTitle != "0")
-				{
-					achCounter++;
-				}
-				arraySwitch = achCounter % 2;
-				if (achCounter < 2)
-				{
-					// do the following if the achievements array is currently empty
-					platforms[platformSelection - 1].setAchievementArraySize(gameSelection - 1, achCounter);
-					platforms[platformSelection - 1].allocateAchievementArray(gameSelection - 1, arraySwitch);
-					platforms[platformSelection - 1].setAchievementTitle(gameSelection -1, achTitle, arraySwitch, 0);
-					//games[selection2 - 1].getAchTitle(arraySwitch, 0);
-				}
-				else
-				{
-					platforms[platformSelection - 1].setAchievementArraySize(gameSelection - 1, achCounter);
-					platforms[platformSelection - 1].allocateAchievementArray(gameSelection - 1, arraySwitch);			
-					for (int i = 0; i < achCounter - 1; i++) // if achCounter is 2, array only has 1 element, runs while i < 1, runs once
+					cout << "Select a platform:\n";
+					for (int i = 0; i < 3; i++)
 					{
-						//copy old array into new array, delete old array, use bool to alternate between the two
-						platforms[platformSelection - 1].setAchievementTitle(gameSelection - 1, 
-						platforms[platformSelection - 1].getAchievementTitle(gameSelection - 1, 1, i),
-						arraySwitch, i);
+						cout << i + 1 << ") " << platforms[i].getName() << "\n";
 					}
-					platforms[platformSelection - 1].setAchievementTitle(gameSelection - 1, achTitle, arraySwitch, achCounter-1);
-				}
-				// if array not empty repeat the above after copying what was in the array to a new array
-				selection2 = 0;
-				while (selection2 != 1 && selection2 != 2)
-				{
-					cout << "1) Add More Achievements\n2) Return to Previous Menu\n";
-					cin >> selection2;
-					if (selection2 == 2)
+					cout << "4) Return to Previous Menu\n";
+					cin >> platformSelection;
+					if (platformSelection != 1 && platformSelection != 2 && platformSelection != 3 && platformSelection != 4)
+						cout << "Invalid Entry\n";
+					if (platformSelection == 4)
 					{
-						newMenu = 1;
+						selection3 = 1;
+					}
+						
+				}
+				if (platformSelection == 1 || platformSelection == 2 || platformSelection == 3)
+				{
+					cout << "Select which game to create achievements for:\n";
+					for (int j = 0; j < 5; j++)
+					{
+						cout << j + 1 << ") " << platforms[platformSelection - 1].getGameName(j) << "\n";
+					}
+					cin >> gameSelection;
+					//Game chosen
+					newMenu = 0;
+					while (newMenu == 0)
+					{
+						cout << "Input achievement title: ";
+						cin >> achTitle;
+						if (achTitle != "0")
+						{
+							achCounter++;
+						}
+						arraySwitch = achCounter % 2;
+						if (achCounter < 2)
+						{
+							// do the following if the achievements array is currently empty
+							platforms[platformSelection - 1].setAchievementArraySize(gameSelection - 1, achCounter);
+							platforms[platformSelection - 1].allocateAchievementArray(gameSelection - 1, arraySwitch);
+							platforms[platformSelection - 1].setAchievementTitle(gameSelection - 1, achTitle, arraySwitch, 0);
+							//games[selection2 - 1].getAchTitle(arraySwitch, 0);
+						}
+						else
+						{
+							platforms[platformSelection - 1].setAchievementArraySize(gameSelection - 1, achCounter);
+							platforms[platformSelection - 1].allocateAchievementArray(gameSelection - 1, arraySwitch);
+							for (int i = 0; i < achCounter - 1; i++) // if achCounter is 2, array only has 1 element, runs while i < 1, runs once
+							{
+								//copy old array into new array, delete old array, use bool to alternate between the two
+								platforms[platformSelection - 1].setAchievementTitle(gameSelection - 1,
+									platforms[platformSelection - 1].getAchievementTitle(gameSelection - 1, !arraySwitch, i),
+									arraySwitch, i);
+							}
+							platforms[platformSelection - 1].setAchievementTitle(gameSelection - 1, achTitle, arraySwitch, achCounter - 1);
+						}
+						// if array not empty repeat the above after copying what was in the array to a new array
+						selection2 = 0;
+						while (selection2 != 1 && selection2 != 2)
+						{
+							cout << "1) Add More Achievements\n2) Return to Previous Menu\n";
+							cin >> selection2;
+							if (selection2 == 2)
+							{
+								newMenu = 1;
+							}
+						}
+					}
+					for (int i = 0; i < achCounter; i++)
+					{
+						cout << platforms[platformSelection - 1].getAchievementTitle(gameSelection - 1, arraySwitch, i) << endl;
 					}
 				}
 			}
-			/*for (int i = 0; i < 2; i++)
-			{
-				cout << games[gameSelection - 1].getAchTitle(arraySwitch, i) << endl; //  error as there isnt yet a second element
-			}*/
 			break;
 		case 'D':
 			inMenu = false;;
