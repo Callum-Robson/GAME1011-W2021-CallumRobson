@@ -39,7 +39,7 @@ void Platform::allocateAchievementArray(int game, int arraySwitch)
 
 string Platform::getAchievementTitle(int game, int arraySwitch, int j)
 {
-	return m_pGameArray[game].getAchTitle(arraySwitch, j); // arraySwitch for y, x and z are index
+	return m_pGameArray[game].getAchTitle(arraySwitch, j); 
 }
 
 

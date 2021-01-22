@@ -20,6 +20,6 @@ string Game::getAchTitle(int achievementArraySwitch, int j)
 {
 	if (achievementArraySwitch == 1)
 		return m_pArray[j].getTitle();
-	else if (achievementArraySwitch == 0)
+	else
 		return m_pArray2[j].getTitle();
 }

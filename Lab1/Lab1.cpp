@@ -100,6 +100,7 @@ int main()
 				cout << j+1 << ") " << platforms[platformSelection - 1].getGameName(j) << "\n";
 			}
 			cin >> gameSelection;
+			//Game chosen
 			for (int i = 0; i < 2; i++)
 			{
 				cout << "Input achievement title: ";

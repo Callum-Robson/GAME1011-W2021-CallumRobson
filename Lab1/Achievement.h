@@ -26,7 +26,7 @@ public:
 	{
 		m_title = x;
 	}
-	string getTitle()
+    string getTitle()
 	{
 		return m_title;
 	}
