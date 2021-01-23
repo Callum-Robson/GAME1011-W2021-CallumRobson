@@ -22,9 +22,25 @@ string Platform::getGameDeveloper(int i)
 	return m_pGameArray[i].getDeveloper();
 }
 
-void Platform::setAchievementTitle(int game, string title, int arraySwitch, int j )
+void Platform::setAchievementTitle(int game, string title, bool arraySwitch, int j )
 {
 	m_pGameArray[game].defineArrayTitle(title, arraySwitch, j);
+}
+
+string Platform::getAchievementDescription(int game, bool arraySwitch, int j)
+{
+	return m_pGameArray[game].getAchievementDescription(arraySwitch, j);
+}
+
+
+void Platform::setAchievementDescription(int game, string description, bool arraySwitch, int j)
+{
+	m_pGameArray[game].setAchievementDescription(description, arraySwitch, j);
+}
+
+void Platform::setAchievementScoreValue(int game, int scoreValue, bool arraySwitch, int j)
+{
+	m_pGameArray[game].setAchievementScoreValue(scoreValue, arraySwitch, j);
 }
 
 void Platform::setAchievementArraySize(int game, int arraysize)
@@ -32,14 +48,24 @@ void Platform::setAchievementArraySize(int game, int arraysize)
 	m_pGameArray[game].setArraySize(arraysize);
 }
 
-void Platform::allocateAchievementArray(int game, int arraySwitch)
+void Platform::allocateAchievementArray(int game, bool arraySwitch)
 {
 	m_pGameArray[game].allocateArray(arraySwitch);
 }
 
-string Platform::getAchievementTitle(int game, int arraySwitch, int j)
+string Platform::getAchievementTitle(int game, bool arraySwitch, int j)
 {
 	return m_pGameArray[game].getAchTitle(arraySwitch, j); 
+}
+
+int Platform::getAchievementArraySize(int game)
+{
+	return m_pGameArray[game].getAchievementArraySize();
+}
+
+void Platform::setArraySwitch(int game, bool arraySwitch)
+{
+	m_pGameArray->setArraySwitch(arraySwitch);
 }
 
 

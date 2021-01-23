@@ -9,13 +9,13 @@ using namespace std;
 int main()
 {
 	Platform platforms[] // array of platform objects
-	{ Platform("PS5", "Sony"), Platform("Switch", "Nintendo"),  Platform("Xbox Series X", "Microsoft")};
+	{ Platform("PS5", "Sony"), Platform("Switch", "Nintendo"),  Platform("Xbox Series X", "Microsoft") };
 	// PS5 Games
 	platforms[0].setGameInfo("Assassin's Creed Valhalla", "Ubisoft", "Ubisoft Montreal", 0);
 	platforms[0].setGameInfo("Marvel's Spider-Man: Miles Morales", "Sony Interactive Entertainment",
-	"Insomniac Games", 1);
+		"Insomniac Games", 1);
 	platforms[0].setGameInfo("SackBoy: A Big Adventure", "Sony Interactive Entertainment",
-	"Sumo Digital", 2);
+		"Sumo Digital", 2);
 	platforms[0].setGameInfo("Demon's Souls", "Sony Interactive Entertainment", "Bluepoint Games", 3);
 	platforms[0].setGameInfo("Immortals Fenyx Rising", "Ubisoft", "Ubisoft Quebec", 4);
 	// Switch Games
@@ -30,23 +30,20 @@ int main()
 	platforms[2].setGameInfo("NBA 2K21", "2K Sports", "Visual Concepts", 2);
 	platforms[2].setGameInfo("Hitman 3", "IO Interactive", "IO Interactive", 3);
 	platforms[2].setGameInfo("Devil May Cry 5", "Capcom", "Capcom", 4);
-	
-	Game games[]
-	{
-		Game("The Legend of Zelda: Breath of the Wild", "Nintendo", "Nintendo"),
-		Game("Assassin's Creed Valhalla", "Ubisoft", "Ubisoft Montreal")
-	};
-	
+
 	bool inMenu = true;
 	int gameSelection = -1;
 	int platformSelection = 0;
 	string achTitle = "0";
+	string achDescription = "0";
+	int achScoreValue = 0;
 	int achCounter = 0;
-	bool arraySwitch = 1;
+	bool arraySwitch = true;
 	bool reverseArraySwitch = !arraySwitch;
 	bool newMenu = 0;
 	int selection2 = 0;
 	int selection3 = 0;
+	int selection4 = 0;
 
 	while (inMenu == true)
 	{
@@ -67,24 +64,66 @@ int main()
 		{
 		case 'A':
 			for (int i = 0; i < 3; i++)
-				cout << platforms[i].getName() << endl;
+				cout << platforms[i].getName() << " - MANUFACTURER: " << platforms[i].getManufacturer() << endl;
 			break;
 		case 'B':
-
-			cout << "View Games selected \n";
-			for (int i = 0; i < 3; i++)
+			selection3 = 0;
+			while (selection3 == 0)
 			{
-				cout << "\n" << platforms[i].getName() << " Games:\n";
-				for (int j = 0; j < 5; j++)
+				platformSelection = 0;
+				while (platformSelection != 1 && platformSelection != 2 && platformSelection != 3 && platformSelection != 4)
 				{
-					cout << platforms[i].getGameName(j) << ". publisher: " << platforms[i].getGamePublisher(j) << ". developer: ";
-					cout << platforms[i].getGameDeveloper(j) << ".\n";
+					cout << "Select a platform:\n";
+					for (int i = 0; i < 3; i++)
+					{
+						cout << i + 1 << ") " << platforms[i].getName() << "\n";
+					}
+					cout << "4) Return to Previous Menu\n";
+					cin >> platformSelection;
+					if (platformSelection != 1 && platformSelection != 2 && platformSelection != 3 && platformSelection != 4)
+						cout << "Invalid Entry\n";
+					if (platformSelection == 4)
+					{
+						selection3 = 1;
+					}
 				}
-				/*games[i].getName(); cout << ", ";
-				games[i].getDeveloper(); cout << ", ";
-				games[i].getPublisher(); cout << endl;*/
-			}
-			break;
+				if (platformSelection != 4)
+				{
+					cout << platforms[platformSelection - 1].getName() << " Games:\n";
+					for (int j = 0; j < 5; j++)
+					{
+						cout << j + 1 << ") " << platforms[platformSelection - 1].getGameName(j) << " - PUBLISHER: " << platforms[platformSelection - 1].getGamePublisher(j) << " - DEVELOPER: ";
+						cout << platforms[platformSelection - 1].getGameDeveloper(j) << ".\n";
+					}
+					cout << "6) Return to Previous Menu\n";
+				}
+				gameSelection = 1;
+				while (selection4 == 0)
+				{
+					gameSelection = 0;
+					cout << "Select Game to View Achievements:\n";
+					cin >> gameSelection;
+					if (gameSelection < 1 || gameSelection > 6)
+						cout << "Invalid Entry\n";
+					else
+					{
+						if (gameSelection == 6)
+							selection4 = 1;
+						else
+						{
+							for (int i = 0; i < platforms[platformSelection - 1].getAchievementArraySize(gameSelection - 1); i++)
+							{
+								cout << "TITLE: " << platforms[platformSelection - 1].getAchievementTitle(gameSelection - 1, arraySwitch, i) << endl;
+								cout << "DESCRIPTION: " << platforms[platformSelection - 1].getAchievementDescription(gameSelection - 1, arraySwitch, i) << endl;
+							}
+							if ((platforms[platformSelection - 1].getAchievementArraySize(gameSelection - 1)) == 0)
+							{
+								cout << "No Achievements Found\n";
+							}
+						}
+					}
+				}
+				break;
 		case 'C':
 			selection3 = 0;
 			while (selection3 == 0)
@@ -105,7 +144,7 @@ int main()
 					{
 						selection3 = 1;
 					}
-						
+
 				}
 				if (platformSelection == 1 || platformSelection == 2 || platformSelection == 3)
 				{
@@ -121,6 +160,10 @@ int main()
 					{
 						cout << "Input achievement title: ";
 						cin >> achTitle;
+						cout << "Input achievement description: ";
+						cin >> achDescription;
+						cout << "Input achievement score value: ";
+						cin >> achScoreValue;
 						if (achTitle != "0")
 						{
 							achCounter++;
@@ -132,6 +175,8 @@ int main()
 							platforms[platformSelection - 1].setAchievementArraySize(gameSelection - 1, achCounter);
 							platforms[platformSelection - 1].allocateAchievementArray(gameSelection - 1, arraySwitch);
 							platforms[platformSelection - 1].setAchievementTitle(gameSelection - 1, achTitle, arraySwitch, 0);
+							platforms[platformSelection - 1].setAchievementDescription(gameSelection - 1, achDescription, arraySwitch, 0);
+							platforms[platformSelection - 1].setArraySwitch(gameSelection - 1, arraySwitch);
 							//games[selection2 - 1].getAchTitle(arraySwitch, 0);
 						}
 						else
@@ -141,11 +186,12 @@ int main()
 							for (int i = 0; i < achCounter - 1; i++) // if achCounter is 2, array only has 1 element, runs while i < 1, runs once
 							{
 								//copy old array into new array, delete old array, use bool to alternate between the two
-								platforms[platformSelection - 1].setAchievementTitle(gameSelection - 1,
-									platforms[platformSelection - 1].getAchievementTitle(gameSelection - 1, !arraySwitch, i),
-									arraySwitch, i);
+								platforms[platformSelection - 1].setAchievementTitle(gameSelection - 1, platforms[platformSelection - 1].getAchievementTitle(gameSelection - 1, !arraySwitch, i),arraySwitch, i);
+								platforms[platformSelection - 1].setAchievementDescription(gameSelection - 1,platforms[platformSelection - 1].getAchievementDescription(gameSelection - 1, !arraySwitch, i), arraySwitch, i);
 							}
 							platforms[platformSelection - 1].setAchievementTitle(gameSelection - 1, achTitle, arraySwitch, achCounter - 1);
+							platforms[platformSelection - 1].setAchievementDescription(gameSelection - 1, achDescription, arraySwitch, achCounter - 1);
+							platforms[platformSelection - 1].setArraySwitch(gameSelection - 1, arraySwitch);
 						}
 						// if array not empty repeat the above after copying what was in the array to a new array
 						selection2 = 0;
@@ -169,7 +215,8 @@ int main()
 		case 'D':
 			inMenu = false;;
 			break;
-		}	
+			}
+		}
 	}
 	return 0;
 }

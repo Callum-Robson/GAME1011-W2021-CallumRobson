@@ -10,7 +10,8 @@ class Game
 {
 private:
 	string m_name, m_publisher, m_developer;
-	int m_arraySize;
+	int m_arraySize = 0;
+	int m_arraySwitch;
 	Achievement* m_pArray;
 	Achievement* m_pArray2;
 public:
@@ -56,11 +57,26 @@ public:
 	{
 		m_pArray->defineArrayDescription(description);
 	}
-	void defineArrayTitle(string arrayTitle, int arraySwitch, int j);
-	string getAchTitle(int achievementArraySwitch, int j);
-	void allocateArray(int achievementArraySwitch);
-
+	void setArraySwitch(bool arraySwitch)
+	{
+		m_arraySwitch = arraySwitch;
+	}
+	int getArraySwitch()
+	{
+		return m_arraySwitch;
+	}
+	int getAchievementArraySize()
+	{
+		return m_arraySize;
+	}
+	void setAchievementDescription(string achievementDefinition, bool arraySwitch, int j);
+	string getAchievementDescription(bool arraySwitch, int j);
+	void defineArrayTitle(string arrayTitle, bool arraySwitch, int j);
+	string getAchTitle(bool achievementArraySwitch, int j);
+	void allocateArray(bool achievementArraySwitch);
+	void setAchievementScoreValue(int ScoreValue, bool arraySwitch, int j);
 };
+
 
 
 #endif

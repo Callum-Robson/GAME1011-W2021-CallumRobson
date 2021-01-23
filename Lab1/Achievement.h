@@ -26,9 +26,17 @@ public:
 	{
 		m_title = x;
 	}
+	void setScoreValue(int scoreValue)
+	{
+		m_scoreValue = scoreValue;
+	}
     string getTitle()
 	{
 		return m_title;
+	}
+	string getAchievementDescription()
+	{
+		return m_description;
 	}
 };
 #endif

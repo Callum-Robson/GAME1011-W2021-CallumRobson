@@ -23,7 +23,7 @@ public:
 	}
 	string getManufacturer()
 	{
-		m_manufacturer;
+		return m_manufacturer;
 	}
 	void setGameInfo(string n, string p, string d, int i);
 
@@ -31,10 +31,19 @@ public:
 	string getGamePublisher(int i);
 	string getGameDeveloper(int i);
 
-	void setAchievementTitle(int game, string title, int arraySwitch, int j);
+	void setAchievementTitle(int game, string title, bool arraySwitch, int j);
+	void setAchievementDescription(int game, string description, bool arraySwitch, int j);
+	void setAchievementScoreValue(int game, int scoreValue, bool arraySwitch, int j);
 	void setAchievementArraySize(int game, int arraysize);
-	void allocateAchievementArray(int game, int arraySwitch);
-	string getAchievementTitle(int game, int arraySwitch, int j);
+	void allocateAchievementArray(int game, bool arraySwitch);
+	string getAchievementTitle(int game, bool arraySwitch, int j);
+	string getAchievementDescription(int game, bool arraySwitch, int j);
+	int getAchievementArraySize(int game);
+	void setArraySwitch(int game, bool arraySwitch);
+	int getArraySwitch(int game)
+	{
+		return m_pGameArray[game].getArraySwitch();
+	}
 };
 
 
