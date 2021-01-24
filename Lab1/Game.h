@@ -70,11 +70,13 @@ public:
 		return m_arraySize;
 	}
 	void setAchievementDescription(string achievementDefinition, bool arraySwitch, int j);
-	string getAchievementDescription(bool arraySwitch, int j);
 	void defineArrayTitle(string arrayTitle, bool arraySwitch, int j);
-	string getAchTitle(bool achievementArraySwitch, int j);
 	void allocateArray(bool achievementArraySwitch);
 	void setAchievementScoreValue(int ScoreValue, bool arraySwitch, int j);
+
+	string getAchievementDescription(bool arraySwitch, int j);
+	string getAchTitle(bool achievementArraySwitch, int j);
+	
 };
 
 

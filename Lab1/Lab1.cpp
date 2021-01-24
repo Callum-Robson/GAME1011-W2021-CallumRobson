@@ -187,7 +187,7 @@ int main()
 							{
 								//copy old array into new array, delete old array, use bool to alternate between the two
 								platforms[platformSelection - 1].setAchievementTitle(gameSelection - 1, platforms[platformSelection - 1].getAchievementTitle(gameSelection - 1, !arraySwitch, i),arraySwitch, i);
-								platforms[platformSelection - 1].setAchievementDescription(gameSelection - 1,platforms[platformSelection - 1].getAchievementDescription(gameSelection - 1, !arraySwitch, i), arraySwitch, i);
+								platforms[platformSelection - 1].setAchievementDescription(gameSelection - 1, platforms[platformSelection - 1].getAchievementDescription(gameSelection - 1, !arraySwitch, i), arraySwitch, i);
 							}
 							platforms[platformSelection - 1].setAchievementTitle(gameSelection - 1, achTitle, arraySwitch, achCounter - 1);
 							platforms[platformSelection - 1].setAchievementDescription(gameSelection - 1, achDescription, arraySwitch, achCounter - 1);
