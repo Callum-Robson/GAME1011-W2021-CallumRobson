@@ -57,3 +57,12 @@ void Weapon::setSpecialAbility(int i, string ability)
 {
 	m_specialAbility[i] = ability;
 }
+
+ostream& operator<<(ostream& strm, Weapon weapon)
+{
+	cout << "\nWeapon: " << weapon.getName()
+	<< "\nWeapon Description: " << weapon.getDescription() << "\nWeapon Damage: " << weapon.getDamageValue()
+	<< "\nWeapon Abilities: " << weapon.getSpecialAbility(0) << ", " << weapon.getSpecialAbility(1)
+	<< endl << endl;
+	return cout;
+}

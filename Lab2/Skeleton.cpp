@@ -16,8 +16,6 @@ void Skeleton::convertName()
 
 void Skeleton::displayInfo()
 {
-	cout << "Name: " << getName() << "\nHealth: " << getHealthValue() << "\nWeapon: " << getWeapon().getName()
-	<< "\nWeapon Description: " << getWeapon().getDescription() << "\nWeapon Damage: " << getWeapon().getDamageValue()
-	<< "\nWeapon Abilities: Marrow " << getWeapon().getSpecialAbility(0) << ", Bone "
-	<< getWeapon().getSpecialAbility(1) << endl << endl;
+	cout << "Name: " << getName() << "\nHealth: " << getHealthValue();
+	cout << getWeapon();
 }

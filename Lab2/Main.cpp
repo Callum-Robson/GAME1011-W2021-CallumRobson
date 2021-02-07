@@ -8,12 +8,14 @@
 
 using namespace std;
 
+
 int main()
 {
+	
 	Weapon sword("Sword", "Like a knife, but bigger", 60, "slash", 0, "chop", 1);
-	Weapon bow("Bow", "It shoot arrows", 40, "arrow", 0, "shot", 1);
+	Weapon bow("Bow", "It shoot arrows", 40, "quick shot", 0, "far shot", 1);
 	Weapon dagger("Dagger", "Like a sword, but smaller", 30, "stab", 0, "slice", 1);
-
+	
 	bool inMenu1 = true;
 	bool inMenu2;
 	bool inMenu3;

@@ -34,7 +34,7 @@ Weapon Character::getWeapon()
 	return m_weapon;
 }
 
-void Character::setWeapon(Weapon weapon)
+void Character::setWeapon(Weapon weapon) // passing by value, making a copy of the weapon?
 {
 	m_weapon = weapon;
 }

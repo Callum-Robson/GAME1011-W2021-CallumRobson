@@ -1,6 +1,7 @@
 #pragma once
 #ifndef __WEAPON__
 #define __WEAPON__
+#include <iostream>
 #include <string>
 using namespace std;
 
@@ -24,6 +25,11 @@ public:
 	void setDamageValue(int damageValue);
 	string getSpecialAbility(int i);
 	void setSpecialAbility(int i, string ability);
+
+
+	friend ostream& operator<<(ostream& strm, Weapon weapon);
+	
+
 };
 
 

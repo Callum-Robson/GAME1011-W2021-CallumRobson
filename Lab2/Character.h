@@ -4,6 +4,7 @@
 #include <string>
 #include "Weapon.h"
 #include <iostream>
+#include <string>
 using namespace std;
 
 class Character
@@ -12,6 +13,7 @@ private:
 	string m_name;
 	int m_healthValue;
 	Weapon m_weapon;
+
 public:
 	Character();
 	

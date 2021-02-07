@@ -13,10 +13,9 @@ void Vampire::convertName()
 	setName("Count " + getName() + "-ula");
 }
 
+
 void Vampire::displayInfo()
 {
-	cout << "Name: " << getName() << "\nHealth: " << getHealthValue() << "\nWeapon: " << getWeapon().getName()
-	<< "\nWeapon Description: " << getWeapon().getDescription() << "\nWeapon Damage: " << getWeapon().getDamageValue()
-	<< "\nWeapon Abilities: 'Bloodsucking' " << getWeapon().getSpecialAbility(0) << ", Bat"
-	<< getWeapon().getSpecialAbility(1) << endl << endl;
+	cout << "Name: " << getName() << "\nHealth: " << getHealthValue();
+	cout << getWeapon();
 }
