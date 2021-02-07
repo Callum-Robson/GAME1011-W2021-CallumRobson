@@ -10,9 +10,9 @@ using namespace std;
 
 int main()
 {
-	Weapon sword("Sword", "Like a knife, but bigger", 60, "slash", 0);
-	Weapon bow("Bow", "It shoot arrows", 40, "arrow", 0);
-	Weapon dagger("Dagger", "Like a sword, but smaller", 30, "stab", 0);
+	Weapon sword("Sword", "Like a knife, but bigger", 60, "slash", 0, "chop", 1);
+	Weapon bow("Bow", "It shoot arrows", 40, "arrow", 0, "shot", 1);
+	Weapon dagger("Dagger", "Like a sword, but smaller", 30, "stab", 0, "slice", 1);
 
 	bool inMenu1 = true;
 	bool inMenu2;
@@ -117,29 +117,40 @@ int main()
 					{
 					case 1:
 						{
-							
+						delete pCharacters[0];
+						pCharacters[0] = pCharacters[1];
+						pCharacters[1] = pCharacters[2];
+						pCharacters[2] = {};
+						numOfCharacters--;
 						}
 						break;
 					case 2:
 						{
-							
+						delete pCharacters[1];
+						pCharacters[1] = pCharacters[2];
+						pCharacters[2] = {};
+						numOfCharacters--;
 						}
 						break;
 					case 3:
 						{
-							
+						delete pCharacters[2];
+						pCharacters[2] = {};
+						numOfCharacters--;
 						}
 						break;
 					case 4:
 						{
-							
+						inMenu3 = false;
 						}
 						break;
 					}
 				}
 				else
+				{
 					cout << "No characters found\n";
-				
+					inMenu3 = false;
+				}
 			}
 		}
 			break;

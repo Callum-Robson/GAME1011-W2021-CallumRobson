@@ -14,7 +14,7 @@ private:
 	string m_specialAbility[2];
 	
 public:
-	Weapon(string name, string description, int dValue, string ability, int abilityIndex);
+	Weapon(string name, string description, int dValue, string ability, int abilityIndex, string ability2, int abilityIndex2);
 	Weapon();
 	string getName();
 	void setName(string name);

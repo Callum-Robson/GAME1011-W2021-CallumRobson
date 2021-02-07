@@ -18,5 +18,6 @@ void Skeleton::displayInfo()
 {
 	cout << "Name: " << getName() << "\nHealth: " << getHealthValue() << "\nWeapon: " << getWeapon().getName()
 	<< "\nWeapon Description: " << getWeapon().getDescription() << "\nWeapon Damage: " << getWeapon().getDamageValue()
-	<< "\nWeapon Abilities: 'Bone' " << getWeapon().getSpecialAbility(0) << endl << endl;
+	<< "\nWeapon Abilities: Marrow " << getWeapon().getSpecialAbility(0) << ", Bone "
+	<< getWeapon().getSpecialAbility(1) << endl << endl;
 }

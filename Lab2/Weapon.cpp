@@ -1,11 +1,12 @@
 #include "Weapon.h"
 
-Weapon::Weapon(string name, string description, int dValue, string ability, int abilityIndex)
+Weapon::Weapon(string name, string description, int dValue, string ability, int abilityIndex, string ability2, int abilityIndex2)
 {
 	m_name = name;
 	m_description = description;
 	m_damageValue = dValue;
 	m_specialAbility[abilityIndex] = ability;
+	m_specialAbility[abilityIndex2] = ability2;
 }
 Weapon::Weapon()
 {

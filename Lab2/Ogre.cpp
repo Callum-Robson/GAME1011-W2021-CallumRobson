@@ -19,5 +19,6 @@ void Ogre::displayInfo()
 {
 	cout << "Name: " << getName() << "\nHealth: " << getHealthValue() << "\nWeapon: " << getWeapon().getName()
 	<< "\nWeapon Description: " << getWeapon().getDescription() << "\nWeapon Damage: " << getWeapon().getDamageValue()
-	<< "\nWeapon Abilities: 'Get out me swamp' " << getWeapon().getSpecialAbility(0)<< endl << endl;
+	<< "\nWeapon Abilities: 'Get out me swamp' " << getWeapon().getSpecialAbility(0) << ", 'Donkey!' "
+	<< getWeapon().getSpecialAbility(1 )<< endl << endl;
 }
