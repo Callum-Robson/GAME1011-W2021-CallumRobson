@@ -1,7 +1,8 @@
 #pragma once
 #ifndef __SURVEY__
 #define __SURVEY__
-#include "Person.h"
+#include "GamingStudent.h"
+#include "NonGamingStudent.h"
 #include "Names.h"
 using namespace std;
 
@@ -14,6 +15,8 @@ private:
 	
 public:
 	void setNumParticipants(int numParticipants);
+	void generate();
+	string getName(int i);
 	
 };
 

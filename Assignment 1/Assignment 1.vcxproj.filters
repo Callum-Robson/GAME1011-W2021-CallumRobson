@@ -33,6 +33,9 @@
     <ClCompile Include="Survey.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Names.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Person.h">

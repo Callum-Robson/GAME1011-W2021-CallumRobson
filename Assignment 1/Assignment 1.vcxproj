@@ -140,6 +140,7 @@
   <ItemGroup>
     <ClCompile Include="GamingStudent.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Names.cpp" />
     <ClCompile Include="NonGamingStudent.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="Student.cpp" />

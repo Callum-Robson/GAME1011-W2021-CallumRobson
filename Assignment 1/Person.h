@@ -3,6 +3,7 @@
 #define __PERSON__
 #include <string>
 #include <iostream>
+#include "Names.h"
 using namespace std;
 
 class Person

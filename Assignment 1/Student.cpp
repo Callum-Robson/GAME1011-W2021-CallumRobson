@@ -3,8 +3,9 @@
 
 void Student::randomFunction()
 {
-	cout << "Placeholder function, just to keep the base class abstract";
+	//Placeholder function, just to keep the Person class abstract
 }
+
 
 void Student::setCollegeName(string collegeName)
 {
