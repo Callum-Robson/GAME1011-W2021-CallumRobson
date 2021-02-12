@@ -24,7 +24,7 @@ string Names::getPersonNames(int i)
 {
 	return m_personNames[i];
 }
-const string Names::m_programNames[] = { "Nursing", "Game Programming", "Graphic Design" };
+const string Names::m_programNames[] = { "Nursing", "Graphic Design", "Game Programming"};
 const string Names::m_streamingNames[] = { "Netflix", "Prime Video", "Disney+", "Crave" };
 const string Names::m_deviceNames[] = { "PS4", "Xbox One", "Nintendo Switch", "PC" };
 const string Names::m_collegeNames[] = { "George Brown", "Seneca", "Centennial" };

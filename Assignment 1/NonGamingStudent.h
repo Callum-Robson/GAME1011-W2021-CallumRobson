@@ -13,7 +13,10 @@ private:
 public:
 	NonGamingStudent();
 	void setStreamingService(string streamingService);
+	string getStreamingService();
 	void setHoursContent(int hours);
+	int getHoursContent();
+	string getStudentType() override;
 };
 
 #endif // defined (__NON_GAMING_STUDENT__)

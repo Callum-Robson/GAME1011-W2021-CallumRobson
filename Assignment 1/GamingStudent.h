@@ -13,7 +13,10 @@ private:
 public:
 	GamingStudent();
 	void setHoursGamingContent(int hours);
+	int getHoursGamingContent();
 	void setGamingDevice(string device);
+	string getGamingDevice();
+	string getStudentType() override;
 };
 
 

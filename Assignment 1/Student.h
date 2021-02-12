@@ -11,6 +11,7 @@ private:
 	string m_programName;
 	int m_currentSemester;
 	void randomFunction() override;
+	//string virtual getStudentType() = 0;
 	
 public:
 	//Student(string name, string collegeName, string programName, int currentSemester, int age);
