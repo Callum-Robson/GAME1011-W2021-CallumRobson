@@ -1,12 +1,5 @@
 #include "Student.h"
 
-
-void Student::randomFunction()
-{
-	//Placeholder function, just to keep the Person class abstract
-}
-
-
 void Student::setCollegeName(string collegeName)
 {
 	m_collegeName = collegeName;

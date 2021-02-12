@@ -1,11 +1,5 @@
 #include "NonGamingStudent.h"
 
-void NonGamingStudent::randomFunction2()
-{
-	cout << "Hello";
-	//Placeholder function, just to keep the Student class abstract
-}
-
 NonGamingStudent::NonGamingStudent()
 {
 	setName(Names::getPersonNames(rand() % 500));

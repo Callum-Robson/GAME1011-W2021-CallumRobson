@@ -10,12 +10,8 @@ private:
 	string m_collegeName;
 	string m_programName;
 	int m_currentSemester;
-	void randomFunction() override;
-	//string virtual getStudentType() = 0;
 	
 public:
-	//Student(string name, string collegeName, string programName, int currentSemester, int age);
-	void virtual randomFunction2() = 0;
 	void setCollegeName(string collegeName);
 	string getCollegeName();
 	void setProgramName(string programName);

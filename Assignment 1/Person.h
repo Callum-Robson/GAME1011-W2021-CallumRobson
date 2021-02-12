@@ -12,7 +12,6 @@ private:
 	string m_name;
 	int m_age;
 public:
-	void virtual randomFunction() = 0;
 	string virtual getStudentType() = 0;
 	void setAge(int age);
 	int getAge();

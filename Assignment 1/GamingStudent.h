@@ -9,7 +9,6 @@ class GamingStudent : public Student
 private:
 	string m_gamingDevice;
 	int m_hoursGamingContent;
-	void randomFunction2() override;
 public:
 	GamingStudent();
 	void setHoursGamingContent(int hours);

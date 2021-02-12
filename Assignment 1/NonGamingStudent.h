@@ -9,7 +9,6 @@ class NonGamingStudent : public Student
 private:
 	string m_streamingService;
 	float m_hoursNonGamingContent;
-	void randomFunction2() override;
 public:
 	NonGamingStudent();
 	void setStreamingService(string streamingService);

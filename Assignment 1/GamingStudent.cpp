@@ -1,9 +1,4 @@
 #include "GamingStudent.h"
-void GamingStudent::randomFunction2()
-{
-	cout << "Hello";
-	//Placeholder function, just to keep the Student class abstract
-}
 
 GamingStudent::GamingStudent()
 {
